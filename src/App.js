@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Main from './components/Main';
+import NoteList from './components/NoteList';
+import Search from './components/Search';
 
 function App() {
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='text-center p-3 text-secondary'>NotesApp</h1>
+      <Search />
+      <Main />
+      <NoteList />
     </div>
   );
 }
