@@ -16,16 +16,26 @@ export const notesSlice = createSlice({
                 note: "ASP.net öğren",
                 color: "#e7e013"
             }
-        ]
+        ],
+        filteredNotes: [
+        ],
+        search: ""
+        
     },
     reducers: {
         addNote: (state,action) => {
             state.notes.push(action.payload);
+            state.filteredNotes = [...state.notes]
         },
         searchNote: (state,action) => {
-            const filteredList = state.notes.filter((note) => {
-                if(note.includes(action.payload)) {
-                    return note
+            if(action.payload === "") {
+                state.filteredNotes = state.notes;
+            }
+            state.filteredNotes = state.notes.filter((note) => {
+                if(note.note.includes(action.payload)) {
+                    return note;
+                }else {
+                    
                 }
             })
         }
@@ -33,6 +43,16 @@ export const notesSlice = createSlice({
     }
 })
 
-export const { addNote } = notesSlice.actions;
+export const getFilteredList = (state) => {
+    if(state.search === "") {
+        return state.notes
+    } else {
+        return state.notes.notes.filter((note) => {
+            note.note == state.notes.search
+        })
+    }
+}
+
+export const { addNote,searchNote } = notesSlice.actions;
 
 export default notesSlice.reducer;

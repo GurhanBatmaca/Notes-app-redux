@@ -5,7 +5,7 @@ import NoteList from './components/NoteList';
 import Search from './components/Search';
 
 function App() {
-
+  
 
   return (
     <div className="App">

@@ -1,7 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { addNote } from '../redux/notesSlice';
+import { useSelector,useDispatch } from 'react-redux';
 
 const NoteList = () => {
-    const  noteList = useSelector(state => state.notes.notes)
+    const  noteList = useSelector(state => state.notes.filteredNotes);
+    const  notes = useSelector(state => state.notes.notes);
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(addNote(""))
+    }, [])
+
   return (
     <div className='p-3 row'>
         {
