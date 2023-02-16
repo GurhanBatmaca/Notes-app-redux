@@ -21,6 +21,13 @@ export const notesSlice = createSlice({
     reducers: {
         addNote: (state,action) => {
             state.notes.push(action.payload);
+        },
+        searchNote: (state,action) => {
+            const filteredList = state.notes.filter((note) => {
+                if(note.includes(action.payload)) {
+                    return note
+                }
+            })
         }
 
     }

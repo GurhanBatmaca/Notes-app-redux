@@ -3,7 +3,11 @@ import React from 'react'
 const Search = () => {
   return (
     <form className='text-center'>
-        <input className='rounded-pill p-2 border-0' placeholder='Search...'></input>
+        <input 
+          // onChange={searchNote}
+          className='rounded-pill p-2 border-0' 
+          placeholder='Search...'>         
+        </input>
     </form>
   )
 }
