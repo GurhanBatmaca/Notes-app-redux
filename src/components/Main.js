@@ -1,20 +1,20 @@
-import {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import { addNote } from '../redux/notesSlice';
 
 const Main = () => {
     const dispatch = useDispatch();
-    const  noteList = useSelector(state => state.notes.notes)
     const [color, setColor] = useState("#e7e013");
-    const [note, setNote] = useState("")
+    const [note, setNote] = useState("");
 
     const formSubmit = (e) => {
         e.preventDefault();
-        dispatch(addNote({id:noteList.length+1,title:`Note ${noteList.length+1}`,note,color}))
+        if(note === "") { return; }
+        dispatch(addNote({id:nanoid(),title:`Note `,note,color}));
         setNote("");
         setColor("#e7e013");
-        console.log(noteList.length);
-    }
+    };
 
   return (
     <div className='text-center p-4 '>
@@ -34,4 +34,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Main;
